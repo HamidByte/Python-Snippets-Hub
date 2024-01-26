@@ -5,8 +5,8 @@ import os
 FILE_PATH = 'file.csv' # Replace with the actual path to your CSV file
 FILE_EXTENSION = '.csv'
 
-def get_max_lengths(csv_file):
-    max_lengths = {}
+def get_file_info(csv_file):
+    file_info = {}
 
     try:
         with open(csv_file, 'r', encoding='utf-8') as file:
@@ -16,21 +16,32 @@ def get_max_lengths(csv_file):
             if not reader.fieldnames:
                 raise ValueError("CSV file has no columns.")
 
-            # Initialize max_lengths dictionary with column names
+            # Initialize file_info dictionary with column names
             for column in reader.fieldnames:
-                max_lengths[column] = 0
+                file_info[column] = {
+                    'max_length': 0,
+                    'empty_cells': 0,
+                }
+            
+            total_records = 0
             
             for row in reader:
-                # Iterate through each column and update the max length if needed
-                for column in max_lengths.keys():
-                    max_lengths[column] = max(max_lengths[column], len(row[column]))
+                total_records += 1
+                # Iterate through each column and update the variables
+                for column in file_info.keys():
+                    cell_value = row[column]
+                    file_info[column]['max_length'] = max(file_info[column]['max_length'], len(str(cell_value)))
+
+                    # Check for empty cells
+                    if not cell_value.strip():
+                            file_info[column]['empty_cells'] += 1
 
     except FileNotFoundError:
         print(f"Error: File '{csv_file}' not found.")
     except Exception as e:
         print(f"Error: {e}")
 
-    return max_lengths
+    return file_info, total_records
 
 def main():
     file_path = FILE_PATH
@@ -46,12 +57,17 @@ def main():
     if file_extension.lower() != FILE_EXTENSION:
         raise ValueError("Invalid file type. Please provide a CSV file.")
     
-    max_lengths = get_max_lengths(file_path)
+    file_info, total_records = get_file_info(file_path)
 
-    if max_lengths:
+
+    if file_info:
         # Display the results
-        for column, length in max_lengths.items():
-            print(f'{column.capitalize()} Max Length: {length}')
+
+        print(f'Total Records: {total_records}')
+
+        for column, info in file_info.items():
+            print(f'{column.capitalize()} Max Length: {info["max_length"]}')
+            print(f'{column.capitalize()} Empty Cells: {info["empty_cells"]}')
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,6 @@
-# CSV Column Length Analyzer
+# CSV Inspector
 
-This simple Python script analyzes a CSV file and determines the maximum length of each column. The script uses the `csv` module to read the CSV file and iterates through each row to find the maximum length for each column.
+This Python script analyzes a CSV file using the csv module, iterating through rows to gather insights such as the total number of records, lengths, and count of empty cells in each column.
 
 ## Requirements
 
@@ -26,11 +26,16 @@ This simple Python script analyzes a CSV file and determines the maximum length 
    python script.py
    ```
 
-6. The script will print the maximum length of each column in the following format:
+6. The script will display insights about each column in the following format:
 
    ```plaintext
-   Column 1 Max Length: X
-   Column 2 Max Length: Y
-   Column 3 Max Length: Z
+   Total Records: X
+   Column 1 Max Length: Y
+   Column 2 Max Length: Z
+   Column 3 Max Length: W
+   ...
+   Column 1 Empty Cells: A
+   Column 2 Empty Cells: B
+   Column 3 Empty Cells: C
    ...
    ```
