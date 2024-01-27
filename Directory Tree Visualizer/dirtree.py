@@ -1,10 +1,6 @@
 import os
 import argparse
 
-# Define global constants
-# PROJECT_PATH = 'C:/Users/user/Documents/Python/MyProject' # Replace with the actual path to your project
-PROJECT_PATH = 'E:/my-nodejs-app'
-
 def simple_tree(dir_path):
     print(os.path.basename(dir_path) + '/')
 
