@@ -2,6 +2,47 @@
 
 dirtree.py is a Python utility toolkit designed for effective directory navigation and visualization. It offers various functions to suit different visualization needs, allowing users to explore and understand project hierarchies. Whether you need a simple tree view or a beautified structure, dirtree.py has you covered.
 
+## Quick Visualization with Beautify Tree Structure
+
+This section allows users to quickly visualize their directory structure using the beautify tree structure feature of `dirtree.py`. The example command and output illustrate how effortlessly you can beautify and understand the hierarchy of your project.
+
+```bash
+python dirtree.py beautify /path/to/my-nodejs-app
+```
+
+**Example Output:**
+
+```bash
+- my-nodejs-app
+  |- config
+  |  |- appConfig.js
+  |  |- database.js
+  |- controllers
+  |  |- database.js
+  |  |- postController.js
+  |- middlewares
+  |  |- authentication.js
+  |  |- authorization.js
+  |- models
+  |  |- post.js
+  |  |- user.js
+  |- package.json
+  |- public
+  |  |- images
+  |  |- styles
+  |- routes
+  |  |- api
+  |  |  |- posts.js
+  |  |  |- users.js
+  |  |- index.js
+  |  |- web
+  |  |  |- auth.js
+  |  |  |- home.js
+  |- server.js
+  |- services
+  |- utils
+```
+
 ## Main Features
 
 - **Simple Tree:** Display a simple tree view of the directory.
@@ -171,5 +212,5 @@ python dirtree.py beautify /path/to/directory
 ### Notes
 
 - Adjust the `/path/to/directory` to the actual path you want to visualize.
-- Use the `--path_style` option to specify the path style for formatting (auto, /, \).
+- Use the `--path_style` option to specify the path style for formatting ("auto", "/", "\").
 - Choose the desired function based on your visualization requirements.
